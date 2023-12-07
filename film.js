@@ -104,3 +104,37 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 ]
+
+const filmIdHash = location.hash.slice(1)
+//console.log('filmId: ' + filmId)
+
+let vybranyFilm
+filmy.forEach((film, index) => {
+	if (filmIdHash === film.id) {
+		vybranyFilm = film
+	}
+
+})
+
+//console.log('id: ' + vybranyFilm.id)
+
+document.querySelector(".card-title").textContent = vybranyFilm.nazev
+
+document.querySelector(".card-text").textContent = vybranyFilm.popis
+
+//seskupit do jednoho
+const plakat = document.querySelector("img")
+plakat.src = vybranyFilm.plakat.url
+plakat.width = vybranyFilm.plakat.sirka
+plakat.height = vybranyFilm.plakat.vyska
+
+console.log('premiéra: ' + vybranyFilm.premiera)
+
+//nefunguje format funkce
+//document.querySelector("#premiera").innerHTML = `Premiéra <strong>${vybranyFilm.premiera.format("D. M. YYYY")}</strong>`
+
+document.querySelector("#premiera").innerHTML = `Premiéra <strong>${vybranyFilm.premiera}</strong>`
+
+
+
+
