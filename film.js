@@ -103,10 +103,23 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'test',
+		nazev: 'Testovací film - název',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/933/166933672_58ebbc.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Zkouška',
+		popis:
+			'Popis',
+		premiera: '2025-12-31',
+	},
 ]
 
+
 const filmIdHash = location.hash.slice(1)
-//console.log('filmId: ' + filmId)
 
 let vybranyFilm
 filmy.forEach((film, index) => {
@@ -116,10 +129,9 @@ filmy.forEach((film, index) => {
 
 })
 
-//console.log('id: ' + vybranyFilm.id)
+//název, popis, plakát /////////////////////////////////////////////////////////////////////
 
 document.querySelector(".card-title").textContent = vybranyFilm.nazev
-
 document.querySelector(".card-text").textContent = vybranyFilm.popis
 
 //seskupit do jednoho
@@ -128,12 +140,78 @@ plakat.src = vybranyFilm.plakat.url
 plakat.width = vybranyFilm.plakat.sirka
 plakat.height = vybranyFilm.plakat.vyska
 
-console.log('premiéra: ' + vybranyFilm.premiera)
+//premiera ////////////////////////////////////////////////////////////////////////////////
 
-//nefunguje format funkce
-//document.querySelector("#premiera").innerHTML = `Premiéra <strong>${vybranyFilm.premiera.format("D. M. YYYY")}</strong>`
+const premieraFormated = dayjs(vybranyFilm.premiera).format("D. M. YYYY")
+const premieraDiff = dayjs(vybranyFilm.premiera).diff(dayjs(), 'days')
+let premieraText
 
-document.querySelector("#premiera").innerHTML = `Premiéra <strong>${vybranyFilm.premiera}</strong>`
+premieraText = `Premiéra <strong>${premieraFormated}</strong>, tj. `
+
+if (premieraDiff >= 0) {
+	premieraText += `za `
+}
+else if (premieraDiff < 0) {
+	premieraText += `před `
+}
+const premieraDiffAbs = Math.abs(premieraDiff)
+
+premieraText += `${premieraDiffAbs}`
+
+if (premieraDiff === 0 || premieraDiff >= 5) {
+	premieraText += ` dní.`
+}
+
+else if (premieraDiff === 1) {
+	premieraText += ` den.`
+}
+
+else if (premieraDiff === -1) {
+	premieraText += ` dnem.`
+}
+
+else if (premieraDiff >= 2 && premieraDiff <= 4 || premieraDiff <= -2) {
+	premieraText += ` dny.`
+}
+
+document.querySelector("#premiera").innerHTML = premieraText
+
+//hvězdičky //////////////////////////////////////////////////////////////////////////////
+
+const stars = document.querySelectorAll(".fa-star")
+
+const highlightStar = (e) => {
+	const starsCount = e.target.textContent
+
+	stars.forEach((star, index) => {
+
+
+		if (index < starsCount) {
+			star.classList.remove("far")
+			star.classList.add("fas")
+		}
+
+		else {
+			star.classList.remove("fas")
+			star.classList.add("far")
+		}
+
+	})
+
+}
+
+document.querySelector(".stars").addEventListener("click", highlightStar)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
