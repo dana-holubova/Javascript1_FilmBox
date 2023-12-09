@@ -180,8 +180,16 @@ document.querySelector("#premiera").innerHTML = premieraText
 
 const stars = document.querySelectorAll(".fa-star")
 
+let starsCount
+//console.log('starsCount1: ' + starsCount)
+
 const highlightStar = (e) => {
-	const starsCount = e.target.textContent
+    let starsCountLastClick = 3
+	//const starsCount = e.target.textContent
+	starsCount = e.target.textContent
+	//console.log('starsCount ve funkci2: ' + starsCount)
+
+	//console.log('starsCountLastClick ve funkci2: ' + starsCountLastClick)
 
 	stars.forEach((star, index) => {
 
@@ -198,9 +206,27 @@ const highlightStar = (e) => {
 
 	})
 
+//console.log('starsCount ve funkci2' + starsCount)
+	//return starsCount
 }
 
-document.querySelector(".stars").addEventListener("click", highlightStar)
+//console.log('starsCount2: ' + starsCount)
+
+//document.querySelector(".stars").addEventListener("click", highlightStar)
+
+stars.forEach((star) => {
+	star.addEventListener("click", highlightStar)
+})
+
+stars.forEach((star) => {
+	star.addEventListener("mouseenter", highlightStar)
+})
+
+stars.forEach((star) => {
+	star.addEventListener("mouseleave", highlightStar)
+})
+
+
 
 
 

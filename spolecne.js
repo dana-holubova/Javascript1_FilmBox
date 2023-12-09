@@ -1,12 +1,13 @@
 const menuTlacitko = document.querySelector("#menu-tlacitko")
 
 const menuPolozky = document.querySelector("#menu-polozky")
-//menuPolozky.classList.add("show")
+
+const menuTlacitkoIkona = document.querySelector(".fa-bars")
 
 const menuHandle = () => {
     menuPolozky.classList.toggle("show")
-    //dokončit
-    //document.querySelector(".fa-bars").classList.toggle("fa-bars")
+    menuTlacitkoIkona.classList.toggle("fa-bars")
+    menuTlacitkoIkona.classList.toggle("fa-xmark")
 }
 
 menuTlacitko.addEventListener("click", menuHandle)
