@@ -216,6 +216,45 @@ stars.forEach((star) => {
 	star.addEventListener("mouseleave", highlightStar)
 })
 
+//poznámka uživatele ////////////////////////////////////////////////////////////////////////
+
+const noteForm = document.querySelector("#note-form")
+
+noteForm.addEventListener("submit", (e) => {
+	e.preventDefault()
+
+	//message input 
+	//s focus() a blur() to nefunguje správně
+	const messageInput = document.querySelector("#message-input")
+	const messageInputValue = messageInput.value
+
+	if (messageInputValue.length === 0) {
+		messageInput.classList.add("is-invalid")
+		//messageInput.classList.add("is-invalid").focus()
+	}
+	else {
+		messageInput.classList.remove("is-invalid")
+		//messageInput.classList.remove("is-invalid").blur()
+	}
+
+	//checkbox - souhlas s podmínkami
+	const termsCheckbox = document.querySelector("#terms-checkbox")
+
+	if (termsCheckbox.checked === false) {
+		termsCheckbox.classList.add("is-invalid")
+		//termsCheckbox.classList.add("is-invalid").focus()
+	}
+	else {
+		termsCheckbox.classList.remove("is-invalid")
+		//termsCheckbox.classList.remove("is-invalid").blur()
+	}
+
+	//vypsání poznámky
+	if (messageInputValue.length > 0 && termsCheckbox.checked === true) {
+		noteForm.innerHTML = `<p>${messageInputValue}</p>`
+	}
+
+})
 
 
 
