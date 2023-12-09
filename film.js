@@ -118,11 +118,13 @@ const filmy = [
 	},
 ]
 
+//vybraný film ///////////////////////////////////////////////////////////////////////////////
 
 const filmIdHash = location.hash.slice(1)
 
 let vybranyFilm
-filmy.forEach((film, index) => {
+
+filmy.forEach((film) => {
 	if (filmIdHash === film.id) {
 		vybranyFilm = film
 	}
@@ -134,7 +136,6 @@ filmy.forEach((film, index) => {
 document.querySelector(".card-title").textContent = vybranyFilm.nazev
 document.querySelector(".card-text").textContent = vybranyFilm.popis
 
-//seskupit do jednoho
 const plakat = document.querySelector("img")
 plakat.src = vybranyFilm.plakat.url
 plakat.width = vybranyFilm.plakat.sirka
@@ -144,6 +145,8 @@ plakat.height = vybranyFilm.plakat.vyska
 
 const premieraFormated = dayjs(vybranyFilm.premiera).format("D. M. YYYY")
 const premieraDiff = dayjs(vybranyFilm.premiera).diff(dayjs(), 'days')
+const premieraDiffYearsAbs = Math.abs(dayjs(vybranyFilm.premiera).diff(dayjs(), 'years'))
+const premieraDiffAbs = Math.abs(premieraDiff)
 let premieraText
 
 premieraText = `Premiéra <strong>${premieraFormated}</strong>, tj. `
@@ -154,7 +157,6 @@ if (premieraDiff >= 0) {
 else if (premieraDiff < 0) {
 	premieraText += `před `
 }
-const premieraDiffAbs = Math.abs(premieraDiff)
 
 premieraText += `${premieraDiffAbs}`
 
@@ -171,8 +173,10 @@ else if (premieraDiff === -1) {
 }
 
 else if (premieraDiff >= 2 && premieraDiff <= 4 || premieraDiff <= -2) {
-	premieraText += ` dny.`
+	premieraText += ` dny`
 }
+
+premieraText += ` (roků = ${premieraDiffYearsAbs}).`
 
 document.querySelector("#premiera").innerHTML = premieraText
 
@@ -180,49 +184,35 @@ document.querySelector("#premiera").innerHTML = premieraText
 
 const stars = document.querySelectorAll(".fa-star")
 
-let starsCount
-//console.log('starsCount1: ' + starsCount)
+let starsCountLastClick
 
 const highlightStar = (e) => {
-    let starsCountLastClick = 3
-	//const starsCount = e.target.textContent
+	let starsCount
 	starsCount = e.target.textContent
-	//console.log('starsCount ve funkci2: ' + starsCount)
 
-	//console.log('starsCountLastClick ve funkci2: ' + starsCountLastClick)
+	if (e.type === "click") {
+		starsCountLastClick = starsCount
+	}
 
 	stars.forEach((star, index) => {
-
+		if (e.type === "mouseleave") {
+			starsCount = starsCountLastClick
+		}
 
 		if (index < starsCount) {
 			star.classList.remove("far")
 			star.classList.add("fas")
 		}
-
 		else {
 			star.classList.remove("fas")
 			star.classList.add("far")
 		}
-
 	})
-
-//console.log('starsCount ve funkci2' + starsCount)
-	//return starsCount
 }
-
-//console.log('starsCount2: ' + starsCount)
-
-//document.querySelector(".stars").addEventListener("click", highlightStar)
 
 stars.forEach((star) => {
 	star.addEventListener("click", highlightStar)
-})
-
-stars.forEach((star) => {
 	star.addEventListener("mouseenter", highlightStar)
-})
-
-stars.forEach((star) => {
 	star.addEventListener("mouseleave", highlightStar)
 })
 

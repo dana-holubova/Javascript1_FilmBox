@@ -106,11 +106,10 @@ const filmy = [
 ]
 
 const seznamFilmu = document.querySelector("#seznam-filmu")
-//console.log(seznamFilmu.length)
+
 seznamFilmu.innerHTML = ''
 
-filmy.forEach((film, index) => {
-console.log(`${index}: id ${film.id}, název: ${film.nazev}`)
+filmy.forEach((film) => {
 seznamFilmu.innerHTML += `
 <div class="col">
   <div class="card">
