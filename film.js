@@ -104,17 +104,17 @@ const filmy = [
 		premiera: '2022-12-24',
 	},
 	{
-		id: 'test',
-		nazev: 'Testovací film - název',
+		id: 'po-strnisti-bos',
+		nazev: 'Po strništi bos',
 		plakat: {
-			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/933/166933672_58ebbc.jpg',
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/161/814/161814638_ea92c3.jpg',
 			sirka: 420,
-			vyska: 592,
+			vyska: 594,
 		},
-		ochutnavka: 'Zkouška',
+		ochutnavka: 'Život v protektorátu z pohledu devítiletého kluka.',
 		popis:
-			'Popis',
-		premiera: '2025-12-31',
+			'Edu Součka, jeho maminku a tatínka už známe z filmu Obecná škola. Nyní jsme však v Protektorátu, kdy je rodina osmiletého Edy donucena vystěhovat se z Prahy na venkov k příbuzným. Městečko, kde chlapec dosud trávil jen prázdniny, se nyní stává jeho domovem. Mladá městská rodina se musí přizpůsobit novému prostředí a také soužití pod jednou střechou s tetou a jejími příbuznými, což zahrnuje i velmi přísného dědečka. Eda má před sebou nelehký úkol: najít a obhájit své místo v místní klukovské partě, jejíž svět je naprosto odlišný od jeho městského. Čeká ho cesta k hledání odvahy, ale také k nečekaným rodinným tajemstvím, která vyplouvají na povrch. Svět dětí a dospělých se sbíhá v hledání odvahy a hrdinství. I v nelehkých dnech války může být totiž nejtěžší prokázat odvahu vůči vlastní rodině.',
+		premiera: '2017-08-17',
 	},
 ]
 
@@ -130,6 +130,9 @@ filmy.forEach((film) => {
 	}
 
 })
+
+//kratší řešení od koučky
+//let vybranyFilm = filmy.find(f => f.id === location.hash.substring(1));
 
 //název, popis, plakát /////////////////////////////////////////////////////////////////////
 
@@ -230,11 +233,11 @@ noteForm.addEventListener("submit", (e) => {
 
 	if (messageInputValue.length === 0) {
 		messageInput.classList.add("is-invalid")
-		//messageInput.classList.add("is-invalid").focus()
+		messageInput.focus();
 	}
 	else {
 		messageInput.classList.remove("is-invalid")
-		//messageInput.classList.remove("is-invalid").blur()
+		messageInput.blur();
 	}
 
 	//checkbox - souhlas s podmínkami
@@ -242,11 +245,11 @@ noteForm.addEventListener("submit", (e) => {
 
 	if (termsCheckbox.checked === false) {
 		termsCheckbox.classList.add("is-invalid")
-		//termsCheckbox.classList.add("is-invalid").focus()
+		termsCheckbox.focus();
 	}
 	else {
 		termsCheckbox.classList.remove("is-invalid")
-		//termsCheckbox.classList.remove("is-invalid").blur()
+		termsCheckbox.blur();
 	}
 
 	//vypsání poznámky

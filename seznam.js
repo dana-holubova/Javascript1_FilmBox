@@ -103,6 +103,19 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'po-strnisti-bos',
+		nazev: 'Po strništi bos',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/161/814/161814638_ea92c3.jpg',
+			sirka: 420,
+			vyska: 594,
+		},
+		ochutnavka: 'Život v protektorátu z pohledu devítiletého kluka.',
+		popis:
+			'Edu Součka, jeho maminku a tatínka už známe z filmu Obecná škola. Nyní jsme však v Protektorátu, kdy je rodina osmiletého Edy donucena vystěhovat se z Prahy na venkov k příbuzným. Městečko, kde chlapec dosud trávil jen prázdniny, se nyní stává jeho domovem. Mladá městská rodina se musí přizpůsobit novému prostředí a také soužití pod jednou střechou s tetou a jejími příbuznými, což zahrnuje i velmi přísného dědečka. Eda má před sebou nelehký úkol: najít a obhájit své místo v místní klukovské partě, jejíž svět je naprosto odlišný od jeho městského. Čeká ho cesta k hledání odvahy, ale také k nečekaným rodinným tajemstvím, která vyplouvají na povrch. Svět dětí a dospělých se sbíhá v hledání odvahy a hrdinství. I v nelehkých dnech války může být totiž nejtěžší prokázat odvahu vůči vlastní rodině.',
+		premiera: '2017-08-17',
+	},
 ]
 
 const seznamFilmu = document.querySelector("#seznam-filmu")
@@ -110,7 +123,7 @@ const seznamFilmu = document.querySelector("#seznam-filmu")
 seznamFilmu.innerHTML = ''
 
 filmy.forEach((film) => {
-seznamFilmu.innerHTML += `
+	seznamFilmu.innerHTML += `
 <div class="col">
   <div class="card">
     <img

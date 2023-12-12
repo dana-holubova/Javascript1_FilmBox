@@ -73,11 +73,11 @@ video {
 	transition-duration: 0.3s;
 }
 
-video[controls] + .player-controls {
+video[controls]+.player-controls {
 	display: none;
 }
 
-.player-controls > * {
+.player-controls>* {
 	filter: drop-shadow(0 0 0.3em #000000);
 }
 
@@ -111,7 +111,11 @@ video[controls] + .player-controls {
 	max-width: none;
 }
 
-.form-check-input.is-invalid ~ .form-check-label,
+.form-check-input.is-invalid~.form-check-label,
 .form-control.is-invalid {
 	margin-bottom: 0;
 }
+
+/*.card {
+	height: 620px;
+}*/
