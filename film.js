@@ -233,11 +233,11 @@ noteForm.addEventListener("submit", (e) => {
 
 	if (messageInputValue.length === 0) {
 		messageInput.classList.add("is-invalid")
-		messageInput.focus();
+		messageInput.focus()
 	}
 	else {
 		messageInput.classList.remove("is-invalid")
-		messageInput.blur();
+		messageInput.blur()
 	}
 
 	//checkbox - souhlas s podmínkami
@@ -245,11 +245,11 @@ noteForm.addEventListener("submit", (e) => {
 
 	if (termsCheckbox.checked === false) {
 		termsCheckbox.classList.add("is-invalid")
-		termsCheckbox.focus();
+		termsCheckbox.focus()
 	}
 	else {
 		termsCheckbox.classList.remove("is-invalid")
-		termsCheckbox.blur();
+		termsCheckbox.blur()
 	}
 
 	//vypsání poznámky

@@ -116,6 +116,6 @@ video[controls]+.player-controls {
 	margin-bottom: 0;
 }
 
-/*.card {
-	height: 620px;
-}*/
+.card {
+	height: 100%;
+}
